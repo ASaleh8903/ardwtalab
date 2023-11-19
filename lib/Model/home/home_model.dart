@@ -29,7 +29,7 @@ class Data {
   dynamic likeType;
   String? status;
   String? statusKey;
-  dynamic createdAt;
+  String? createdAt;
   dynamic updatedAt;
   String? image;
   List<String>? pics;

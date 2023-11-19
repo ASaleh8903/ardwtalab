@@ -18,6 +18,7 @@ class Layout extends StatelessWidget {
         return Scaffold(
           body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
+            unselectedItemColor: Colors.black,
             onTap: (index) {
               cubit.changeIndex(index);
             },
@@ -55,13 +56,13 @@ class Layout extends StatelessWidget {
                 height: 70,
                 width: 70,
                 decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, -2),
-                          color: Colors.grey.shade200,
-                          spreadRadius: 1,
-                          blurRadius: 2)
-                    ],
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //       offset: const Offset(0, -2),
+                    //       color: Colors.grey.shade200,
+                    //       spreadRadius: 1,
+                    //       blurRadius: 2)
+                    // ],
                     border: Border.all(color: Colors.white, width: 6.0),
                     shape: BoxShape.circle,
                     color: defaultColor),

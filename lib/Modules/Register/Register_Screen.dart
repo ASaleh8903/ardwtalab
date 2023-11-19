@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../Shared/components/components.dart';
@@ -28,7 +29,12 @@ class RegisterScreen extends StatelessWidget {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
+              ),
+            ),
             body: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -123,7 +129,6 @@ class RegisterScreen extends StatelessWidget {
                           height: 30.0,
                         ),
                         defaultButton(
-                          background: Colors.red,
                           function: () {},
                           text: 'register',
                           isUpperCase: true,

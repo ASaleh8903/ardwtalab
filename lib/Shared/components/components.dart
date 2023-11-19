@@ -10,7 +10,6 @@ Widget defaultButton({
   double radius = 3.0,
   required Function function,
   required String text,
-  required Color background,
 }) =>
     Container(
       width: width,
@@ -27,10 +26,10 @@ Widget defaultButton({
         ),
       ),
       decoration: BoxDecoration(
+        color: defaultColor,
         borderRadius: BorderRadius.circular(
           radius,
         ),
-        color: background,
       ),
     );
 
@@ -132,9 +131,7 @@ class defaultFormField extends StatelessWidget {
       initialValue: initialValue,
       decoration: InputDecoration(
         labelText: label,
-        prefixIcon: Icon(
-          prefix,
-        ),
+        prefixIcon: Icon(prefix),
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: () {

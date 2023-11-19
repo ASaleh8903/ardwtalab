@@ -1,11 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Layout/cubit/cubit.dart';
+import 'Layout/cubit/splash_screen.dart';
 import 'Layout/cubit/states.dart';
-import 'Layout/layout.dart';
-import 'Modules/login/login_screen.dart';
-import 'Modules/on_boarding/on_boarding.dart';
+import 'Modules/login/splash_screen.dart';
 import 'Shared/bloc_observer.dart';
 import 'Shared/cubit/cubit/app_cubit.dart';
 import 'Shared/cubit/states/states.dart';
@@ -14,8 +14,8 @@ import 'Shared/network/remote/dio_helper.dart';
 import 'Shared/styles/themes.dart';
 
 void main() async {
-  // بيتأكد ان كل حاجه هنا في الميثود خلصت و بعدين يتفح الابلكيشن
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
@@ -31,11 +31,11 @@ void main() async {
 
   if (onBoarding != null) {
     if (token != null)
-      widget = Layout();
+      widget = LayoutSplashScreen();
     else
-      widget = LoginScreen();
+      widget = LoginSplashScreen();
   } else {
-    widget = OnBoardingScreen();
+    widget = LoginSplashScreen();
   }
 
   runApp(MyApp(
@@ -44,14 +44,7 @@ void main() async {
   ));
 }
 
-// Stateless
-// Stateful
-
-// class MyApp
-
 class MyApp extends StatelessWidget {
-  // constructor
-  // build
   final bool? isDark;
   final Widget? startWidget;
 
@@ -73,11 +66,14 @@ class MyApp extends StatelessWidget {
             ),
         ),
         BlocProvider(
-          create: (BuildContext context) =>
-              ArdWTalabCubit(ArdWTalabInitialState())
-                ..GetHomeData()
-                ..getDepartment(),
-        ),
+            create: (BuildContext context) =>
+                ArdWTalabCubit(ArdWTalabInitialState())
+                  ..GetHomeData()
+                  ..getDepartment()
+                  ..GetSimilarAd()
+                  ..getUserData()
+            // ..GetAdDetails()
+            )
       ],
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
