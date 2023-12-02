@@ -26,6 +26,9 @@ android {
     namespace "com.example.ardwtalab"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
+    defaultConfig{
+        minSdkVersion 21
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
